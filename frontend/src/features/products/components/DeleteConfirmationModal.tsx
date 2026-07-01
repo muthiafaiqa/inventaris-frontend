@@ -41,37 +41,37 @@ export function DeleteConfirmationModal({
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       
       {/* Modal Content Card */}
-      <div className="relative bg-white dark:bg-slate-900 rounded-2xl w-full max-w-sm shadow-2xl border border-slate-200 dark:border-slate-800 z-10 overflow-hidden animate-scale-up">
-        <div className="p-6 text-center space-y-4">
-          <div className="mx-auto w-12 h-12 bg-red-100 dark:bg-red-950/40 rounded-full flex items-center justify-center text-red-500 dark:text-red-400">
-            <AlertTriangle size={24} />
+      <div className="relative bg-white dark:bg-slate-900 rounded-none w-full max-w-sm border border-slate-300 dark:border-slate-800 z-10 overflow-hidden">
+        <div className="p-5 text-center space-y-3">
+          <div className="mx-auto w-10 h-10 bg-red-500/5 text-red-600 dark:text-red-500 rounded-none flex items-center justify-center border border-red-500/20">
+            <AlertTriangle size={18} />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-              Hapus Produk?
+            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono">
+              KONFIRMASI PENGHAPUSAN
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
-              Apakah Anda yakin ingin menghapus produk <span className="font-semibold text-slate-800 dark:text-slate-200">"{productName}"</span>? Tindakan ini tidak dapat dibatalkan.
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              Apakah Anda yakin ingin menghapus produk <span className="font-bold text-slate-800 dark:text-slate-200">"{productName}"</span>? Tindakan ini bersifat permanen dan tidak dapat dibatalkan.
             </p>
           </div>
         </div>
         
         {/* Modal Footer Actions */}
-        <div className="px-6 py-4 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end space-x-3">
+        <div className="px-4 py-3 bg-slate-50 dark:bg-slate-950/40 border-t border-slate-300 dark:border-slate-800 flex items-center justify-end space-x-2">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-sm font-semibold text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all"
+            className="bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-200 font-bold px-3 py-1.5 border border-slate-300 dark:border-slate-800 rounded-none transition-colors text-[10px] uppercase tracking-wider"
           >
             Batal
           </button>
           <button
             onClick={handleDelete}
             disabled={deleting}
-            className="flex items-center space-x-2 bg-red-600 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-red-600/10 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center space-x-1.5 bg-red-600 hover:bg-red-500 text-white font-bold px-3 py-1.5 border border-red-600 rounded-none transition-colors text-[10px] uppercase tracking-wider disabled:opacity-40"
           >
-            {deleting && <Loader2 size={16} className="animate-spin" />}
-            <span>Hapus</span>
+            {deleting && <Loader2 size={12} className="animate-spin" />}
+            <span>HAPUS</span>
           </button>
         </div>
       </div>

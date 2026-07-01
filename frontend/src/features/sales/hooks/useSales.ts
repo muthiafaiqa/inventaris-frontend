@@ -19,12 +19,16 @@ export function useSales() {
   const [sales, setSales] = useState<SalesRecord[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
 
-  // Fetch all sales records with joined product details, sorted by year & month descending
+  // Fetch sales records with pagination range (10 records per page)
   const fetchSales = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
+      const from = (page - 1) * 10;
+      const to = from + 9;
+
       const { data, error: fetchError } = await supabase
         .from('sales_history')
         .select(`
@@ -41,9 +45,15 @@ export function useSales() {
           )
         `)
         .order('tahun', { ascending: false })
-        .order('bulan', { ascending: false });
+        .order('bulan', { ascending: false })
+        .range(from, to);
 
       if (fetchError) {
+        // If out of bounds error, handle it gracefully
+        if (fetchError.code === 'PGRST103') {
+          setSales([]);
+          return;
+        }
         throw fetchError;
       }
       setSales((data as any) || []);
@@ -53,7 +63,7 @@ export function useSales() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [page]);
 
   // Add a new sales record
   const addSales = async (record: Omit<SalesRecord, 'id' | 'created_at' | 'products'>) => {
@@ -143,6 +153,8 @@ export function useSales() {
     sales,
     loading,
     error,
+    page,
+    setPage,
     refetch: fetchSales,
     addSales,
     deleteSales,

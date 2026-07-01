@@ -4,6 +4,7 @@ import { useProducts, type Product } from '../hooks/useProducts';
 import { ProductTable } from '../components/ProductTable';
 import { ProductFormModal } from '../components/ProductFormModal';
 import { DeleteConfirmationModal } from '../components/DeleteConfirmationModal';
+import { RestockModal } from '../components/RestockModal';
 
 export default function ProductsPage() {
   const { 
@@ -12,7 +13,8 @@ export default function ProductsPage() {
     error, 
     addProduct, 
     updateProduct, 
-    deleteProduct 
+    deleteProduct,
+    refetch
   } = useProducts();
 
   // Modal states
@@ -23,6 +25,10 @@ export default function ProductsPage() {
   // Delete confirmation states
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
   const [productToDelete, setProductToDelete] = useState<Product | null>(null);
+
+  // Restock states
+  const [isRestockOpen, setIsRestockOpen] = useState(false);
+  const [productToRestock, setProductToRestock] = useState<Product | null>(null);
 
   const handleOpenAddModal = () => {
     setModalMode('add');
@@ -39,6 +45,11 @@ export default function ProductsPage() {
   const handleOpenDeleteConfirm = (product: Product) => {
     setProductToDelete(product);
     setIsDeleteConfirmOpen(true);
+  };
+
+  const handleOpenRestockModal = (product: Product) => {
+    setProductToRestock(product);
+    setIsRestockOpen(true);
   };
 
   // Submit Handler for Form
@@ -78,29 +89,29 @@ export default function ProductsPage() {
   return (
     <div className="space-y-6">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-300 dark:border-slate-800 pb-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h1 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider font-sans">
             Master Produk
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">
-            Kelola SKU, nama barang, harga, satuan, dan minimal stok inventaris Toko Surya Elektrik.
+          <p className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mt-1">
+            Pengelolaan Data Katalog SKU & Batas Aman Persediaan Barang
           </p>
         </div>
         <button
           onClick={handleOpenAddModal}
-          className="flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20 active:scale-98"
+          className="flex items-center justify-center space-x-2 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-200 font-bold px-3 py-1.5 border border-slate-300 dark:border-slate-800 rounded-none transition-all duration-200 ease-in-out text-[10px] uppercase tracking-wider active:scale-98"
         >
-          <Plus size={18} />
-          <span>Tambah Produk</span>
+          <Plus size={12} className="text-slate-500" />
+          <span>TAMBAH PRODUK</span>
         </button>
       </div>
 
       {/* Database Fetch Error */}
       {error && (
-        <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl flex items-center space-x-3 text-sm">
-          <AlertTriangle size={20} className="shrink-0" />
-          <span>{error}</span>
+        <div className="bg-red-500/5 border border-red-500/30 text-red-700 dark:text-red-400 p-3 rounded-none flex items-center space-x-2.5 text-[11px] font-mono font-bold uppercase tracking-wider">
+          <AlertTriangle size={14} className="shrink-0" />
+          <span>ERROR: {error}</span>
         </div>
       )}
 
@@ -110,6 +121,7 @@ export default function ProductsPage() {
         loading={loading}
         onEdit={handleOpenEditModal}
         onDelete={handleOpenDeleteConfirm}
+        onRestock={handleOpenRestockModal}
       />
 
       {/* Form Dialog Sub-Component */}
@@ -127,6 +139,17 @@ export default function ProductsPage() {
         productName={productToDelete?.nama || ''}
         onClose={() => setIsDeleteConfirmOpen(false)}
         onConfirm={handleDeleteConfirm}
+      />
+
+      {/* Restock Dialog Sub-Component */}
+      <RestockModal
+        isOpen={isRestockOpen}
+        product={productToRestock}
+        onClose={() => {
+          setIsRestockOpen(false);
+          setProductToRestock(null);
+        }}
+        onSuccess={refetch}
       />
     </div>
   );

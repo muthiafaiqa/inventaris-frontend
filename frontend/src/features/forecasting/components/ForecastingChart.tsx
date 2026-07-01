@@ -39,31 +39,31 @@ export function ForecastingChart({
     labels,
     datasets: [
       {
-        label: 'Data Aktual',
+        label: 'DATA AKTUAL',
         data: actualData,
-        borderColor: '#3b82f6', // Blue 500 (Biru / Netral)
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-        borderWidth: 3,
-        tension: 0.3,
-        pointBackgroundColor: '#3b82f6',
+        borderColor: '#64748b', // Slate 500 (Monochromatic base)
+        backgroundColor: 'rgba(100, 116, 139, 0.05)',
+        borderWidth: 2,
+        tension: 0.1, // Strict industrial line (less curvy)
+        pointBackgroundColor: '#64748b',
         pointBorderColor: '#ffffff',
-        pointBorderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 7,
+        pointBorderWidth: 1.5,
+        pointRadius: 4,
+        pointHoverRadius: 6,
       },
       {
-        label: 'Hasil Ramalan (Trend Moment)',
+        label: 'HASIL RAMALAN (TREND MOMENT)',
         data: forecastData,
-        borderColor: '#f59e0b', // Amber 500 (Oranye Aksentuasi)
-        backgroundColor: 'rgba(245, 158, 11, 0.05)',
-        borderWidth: 3,
-        borderDash: [5, 5],
-        tension: 0.3,
-        pointBackgroundColor: '#f59e0b',
+        borderColor: '#4f46e5', // Indigo 600 (Single Brand Accent)
+        backgroundColor: 'rgba(79, 70, 229, 0.05)',
+        borderWidth: 2,
+        borderDash: [4, 4], // Dashed indicator for estimation
+        tension: 0.1,
+        pointBackgroundColor: '#4f46e5',
         pointBorderColor: '#ffffff',
-        pointBorderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 7,
+        pointBorderWidth: 1.5,
+        pointRadius: 4,
+        pointHoverRadius: 6,
       }
     ]
   };
@@ -75,29 +75,30 @@ export function ForecastingChart({
       legend: {
         position: 'top' as const,
         labels: {
-          color: '#64748b', // Slate 500
+          color: '#64748b',
           font: {
-            family: 'Outfit, Inter, sans-serif',
-            size: 12,
-            weight: 500,
+            family: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            size: 9,
+            weight: 'bold',
           },
-          boxWidth: 24,
-          padding: 20,
+          boxWidth: 16,
+          padding: 12,
         }
       },
       tooltip: {
-        padding: 12,
-        backgroundColor: '#0f172a', // Slate 900
+        padding: 8,
+        backgroundColor: '#0f172a',
         titleColor: '#ffffff',
-        bodyColor: '#cbd5e1', // Slate 300
+        bodyColor: '#cbd5e1',
+        cornerRadius: 0, // Sharp industrial corners
         titleFont: {
-          family: 'Outfit, Inter, sans-serif',
-          size: 13,
+          family: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+          size: 10,
           weight: 'bold'
         },
         bodyFont: {
-          family: 'Outfit, Inter, sans-serif',
-          size: 12
+          family: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+          size: 10
         },
         callbacks: {
           label: function(context) {
@@ -119,22 +120,22 @@ export function ForecastingChart({
           display: false,
         },
         ticks: {
-          color: '#94a3b8', // Slate 400
+          color: '#94a3b8',
           font: {
-            family: 'Outfit, Inter, sans-serif',
-            size: 11
+            family: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            size: 9
           }
         }
       },
       y: {
         grid: {
-          color: 'rgba(148, 163, 184, 0.08)', // Light slate grid
+          color: 'rgba(148, 163, 184, 0.06)',
         },
         ticks: {
           color: '#94a3b8',
           font: {
-            family: 'Outfit, Inter, sans-serif',
-            size: 11
+            family: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            size: 9
           }
         },
         beginAtZero: true
@@ -143,7 +144,7 @@ export function ForecastingChart({
   };
 
   return (
-    <div className="relative w-full h-[360px] md:h-[400px]">
+    <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-none p-4 w-full h-[360px] md:h-[400px]">
       <Line data={data} options={options} />
     </div>
   );

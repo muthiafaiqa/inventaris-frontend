@@ -8,6 +8,8 @@ export interface Product {
   harga: number;
   unit: string;
   min_stock: number;
+  current_stock?: number;
+  stok?: number;
   created_at: string;
 }
 

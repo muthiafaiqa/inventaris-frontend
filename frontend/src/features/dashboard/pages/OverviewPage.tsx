@@ -35,61 +35,61 @@ export default function OverviewPage() {
       setSeedResult({ success: false, message: err.message || 'Gagal melakukan seeding.' });
     } finally {
       setSeeding(false);
-      setTimeout(() => setSeedResult(null), 6000);
+      setTimeout(() => setSeedResult(null), 5000);
     }
   };
 
   return (
     <div className="space-y-6">
       {/* Header section with Seeder Button */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-300 dark:border-slate-800 pb-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Ringkasan Dasbor
+          <h1 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider font-sans">
+            Dasbor Pemantauan
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">
-            Status terkini inventaris elektrik, rekap transaksi penjualan, dan pemberitahuan stok menipis.
+          <p className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mt-1">
+            Status Persediaan & Log Kuantitas Transaksi Penjualan
           </p>
         </div>
 
         <button
           onClick={handleRunSeed}
           disabled={seeding || loading}
-          className="flex items-center justify-center space-x-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold px-4 py-2.5 rounded-xl transition-all border border-slate-250 dark:border-slate-700 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center space-x-2 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-200 font-bold px-3 py-1.5 border border-slate-300 dark:border-slate-800 rounded-none transition-all duration-200 ease-in-out text-[10px] uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {seeding ? (
-            <Loader2 size={18} className="animate-spin text-cyan-500" />
+            <Loader2 size={12} className="animate-spin text-slate-500" />
           ) : (
-            <Database size={18} className="text-cyan-500" />
+            <Database size={12} className="text-slate-500" />
           )}
-          <span>{seeding ? 'Seeding Data...' : 'Seed Data Sampel'}</span>
+          <span>{seeding ? 'SEEDING...' : 'SEED SAMPLE DATA'}</span>
         </button>
       </div>
 
-      {/* Seeding Result Toast / Alert */}
+      {/* Seeding Result Alert */}
       {seedResult && (
-        <div className={`p-4 rounded-xl border flex items-start space-x-3 text-sm animate-fade-in ${
+        <div className={`p-3 rounded-none border flex items-start space-x-3 text-[11px] font-mono transition-all duration-200 ease-in-out ${
           seedResult.success 
-            ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-600 dark:text-emerald-400' 
-            : 'bg-red-500/10 border-red-500/25 text-red-600 dark:text-red-400'
+            ? 'bg-emerald-500/5 border-emerald-500/30 text-emerald-700 dark:text-emerald-400' 
+            : 'bg-red-500/5 border-red-500/30 text-red-700 dark:text-red-400'
         }`}>
           {seedResult.success ? (
-            <CheckCircle2 size={20} className="shrink-0 mt-0.5" />
+            <CheckCircle2 size={14} className="shrink-0 mt-0.5" />
           ) : (
-            <AlertOctagon size={20} className="shrink-0 mt-0.5" />
+            <AlertOctagon size={14} className="shrink-0 mt-0.5" />
           )}
           <div>
-            <h4 className="font-bold">{seedResult.success ? 'Seed Sukses' : 'Seed Gagal'}</h4>
-            <p className="mt-0.5 text-xs opacity-90">{seedResult.message}</p>
+            <h4 className="font-bold uppercase tracking-wider">{seedResult.success ? 'SYSTEM_SEED_SUCCESS' : 'SYSTEM_SEED_FAILED'}</h4>
+            <p className="mt-0.5 opacity-90">{seedResult.message}</p>
           </div>
         </div>
       )}
 
       {/* Database Error Banner */}
       {error && (
-        <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl flex items-center space-x-3 text-sm">
-          <ShieldAlert size={20} className="shrink-0" />
-          <span>{error}</span>
+        <div className="bg-red-500/5 border border-red-500/30 text-red-700 dark:text-red-400 p-3 rounded-none flex items-center space-x-2.5 text-[11px] font-mono font-bold uppercase tracking-wider">
+          <ShieldAlert size={14} className="shrink-0" />
+          <span>ERROR: {error}</span>
         </div>
       )}
 
@@ -109,10 +109,10 @@ export default function OverviewPage() {
       />
 
       {/* Info Footnote on Stock Simulation */}
-      <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-850 flex items-start space-x-2.5 text-xs text-slate-500 dark:text-slate-400">
-        <Info size={16} className="text-cyan-500 shrink-0 mt-0.5" />
+      <div className="bg-slate-50 dark:bg-slate-900/40 p-3 rounded-none border border-slate-300 dark:border-slate-800 flex items-start space-x-2.5 text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed font-sans">
+        <Info size={12} className="text-slate-500 shrink-0 mt-0.5" />
         <span>
-          <strong>Catatan Estimasi Stok:</strong> Mengingat modul Kasir/POS realtime berada di luar cakupan (Out-Of-Scope), sistem menghitung stok saat ini dengan mendeteksi aktivitas inventori atau melakukan simulasi deterministik. Persediaan dihitung untuk memvalidasi performa ambang batas stok minimal (Restock Alert).
+          <strong>DOKUMENTASI SISTEM:</strong> Mengingat modul Kasir/POS berjalan di luar cakupan fungsional (*Out-Of-Scope*), kuantitas stok saat ini dievaluasi secara dinamis untuk menguji keandalan batas minimum persediaan (*Restock Warning Alert*). Data kalkulasi ini didesain sepenuhnya berdasarkan logika verifikasi inventori toko.
         </span>
       </div>
     </div>

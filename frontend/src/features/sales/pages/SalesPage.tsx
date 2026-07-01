@@ -12,6 +12,8 @@ export default function SalesPage() {
     sales, 
     loading: salesLoading, 
     error, 
+    page,
+    setPage,
     addSales, 
     deleteSales 
   } = useSales();
@@ -81,39 +83,39 @@ export default function SalesPage() {
   return (
     <div className="space-y-6">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-300 dark:border-slate-800 pb-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h1 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider font-sans">
             Historis Penjualan
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">
-            Catat rekapitulasi kuantitas penjualan produk bulanan sebagai basis perhitungan peramalan stok.
+          <p className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mt-1">
+            Log Rekap Kuantitas Transaksi Penjualan Bulanan
           </p>
         </div>
         <button
           onClick={handleOpenAddModal}
           disabled={products.length === 0}
-          className="flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center space-x-2 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-200 font-bold px-3 py-1.5 border border-slate-300 dark:border-slate-800 rounded-none transition-all duration-200 ease-in-out text-[10px] uppercase tracking-wider active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Plus size={18} />
-          <span>Input Penjualan</span>
+          <Plus size={12} className="text-slate-500" />
+          <span>INPUT PENJUALAN</span>
         </button>
       </div>
 
       {/* Database Fetch Error */}
       {error && (
-        <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl flex items-center space-x-3 text-sm">
-          <AlertTriangle size={20} className="shrink-0" />
-          <span>{error}</span>
+        <div className="bg-red-500/5 border border-red-500/30 text-red-700 dark:text-red-400 p-3 rounded-none flex items-center space-x-2.5 text-[11px] font-mono font-bold uppercase tracking-wider">
+          <AlertTriangle size={14} className="shrink-0" />
+          <span>ERROR: {error}</span>
         </div>
       )}
 
       {/* Warning if no products are configured */}
       {products.length === 0 && !productsLoading && (
-        <div className="bg-amber-500/10 border border-amber-500/20 text-amber-500 dark:text-amber-400 p-4 rounded-xl flex items-center space-x-3 text-sm">
-          <AlertTriangle size={20} className="shrink-0" />
+        <div className="bg-amber-500/5 border border-amber-500/30 text-amber-700 dark:text-amber-500 p-3 rounded-none flex items-center space-x-2.5 text-[11px] font-mono font-bold uppercase tracking-wider">
+          <AlertTriangle size={14} className="shrink-0" />
           <span>
-            Silakan tambahkan data produk terlebih dahulu di menu <strong>Master Produk</strong> sebelum menginput data penjualan.
+            PEMBERITAHUAN: Tambahkan data produk di menu Master Produk terlebih dahulu.
           </span>
         </div>
       )}
@@ -123,6 +125,8 @@ export default function SalesPage() {
         sales={sales}
         loading={salesLoading || productsLoading}
         onDelete={handleOpenDeleteConfirm}
+        page={page}
+        onPageChange={setPage}
       />
 
       {/* Form Dialog Sub-Component */}

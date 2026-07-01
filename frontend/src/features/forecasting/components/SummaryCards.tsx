@@ -30,24 +30,18 @@ export function SummaryCards({
   const getMapeIndicator = (mapeVal: number) => {
     if (mapeVal < 10) {
       return {
-        label: 'Akurasi Tinggi (Sangat Baik)',
-        colorClass: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
-        accentBg: 'bg-emerald-500/5',
-        iconBg: 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400'
+        label: 'AKURASI TINGGI',
+        colorClass: 'text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200/50'
       };
     } else if (mapeVal <= 20) {
       return {
-        label: 'Akurasi Sedang (Baik)',
-        colorClass: 'text-amber-500 bg-amber-500/10 border-amber-500/20',
-        accentBg: 'bg-amber-500/5',
-        iconBg: 'bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400'
+        label: 'AKURASI SEDANG',
+        colorClass: 'text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/20 border border-amber-200/50'
       };
     } else {
       return {
-        label: 'Akurasi Rendah (Buruk)',
-        colorClass: 'text-red-500 bg-red-500/10 border-red-500/20',
-        accentBg: 'bg-red-500/5',
-        iconBg: 'bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400'
+        label: 'AKURASI RENDAH',
+        colorClass: 'text-red-700 dark:text-red-400 bg-red-50 dark:bg-red-950/20 border border-red-200/50'
       };
     }
   };
@@ -55,95 +49,95 @@ export function SummaryCards({
   const indicator = getMapeIndicator(mape);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {/* 1. Next Period Forecast Recommendation */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-        <div className="flex items-center justify-between">
+      <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-none p-4 flex flex-col justify-between">
+        <div className="flex items-start justify-between">
           <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Rekomendasi Pengadaan
-            </p>
-            <h4 className="text-sm font-semibold text-cyan-600 dark:text-cyan-400">
-              Periode: {nextPeriodLabel}
-            </h4>
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 block">
+              REKOMENDASI PENGADAAN
+            </span>
+            <span className="text-[10px] font-bold font-mono tracking-wider text-slate-500 dark:text-slate-400 uppercase block mt-1">
+              PERIODE: {nextPeriodLabel}
+            </span>
           </div>
-          <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 rounded-xl text-cyan-600 dark:text-cyan-400">
-            <ShoppingCart size={20} />
+          <div className="p-1.5 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 rounded-none">
+            <ShoppingCart size={16} />
           </div>
         </div>
-        <div className="mt-4 flex items-baseline space-x-1.5">
-          <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
+        <div className="mt-3 flex items-baseline space-x-1">
+          <span className="text-3xl font-bold font-mono tracking-tighter text-slate-900 dark:text-slate-100">
             {formattedForecast}
           </span>
-          <span className="text-sm font-semibold text-slate-400">
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
             {unit}
           </span>
         </div>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-          Jumlah pesanan barang yang disarankan untuk menjaga keseimbangan stok.
+        <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-2 uppercase tracking-wide">
+          Saran kuantitas pesanan baru untuk menjaga inventori.
         </p>
       </div>
 
       {/* 2. Accuracy Level (MAPE) */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Tingkat Akurasi (MAPE)
-            </p>
-            <span className={`inline-block text-[11px] font-bold px-2.5 py-0.5 border rounded-full mt-0.5 ${indicator.colorClass}`}>
+      <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-none p-4 flex flex-col justify-between">
+        <div className="flex items-start justify-between">
+          <div className="space-y-1.5">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 block">
+              TINGKAT AKURASI (MAPE)
+            </span>
+            <span className={`inline-block text-[9px] font-bold px-1.5 py-0.5 rounded-none ${indicator.colorClass}`}>
               {indicator.label}
             </span>
           </div>
-          <div className={`p-3 rounded-xl ${indicator.iconBg}`}>
-            <Percent size={20} />
+          <div className="p-1.5 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 rounded-none">
+            <Percent size={16} />
           </div>
         </div>
-        <div className="mt-4 flex items-baseline space-x-1.5">
-          <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
+        <div className="mt-3 flex items-baseline space-x-1">
+          <span className="text-3xl font-bold font-mono tracking-tighter text-slate-900 dark:text-slate-100">
             {formattedMape}%
           </span>
-          <span className="text-xs font-medium text-slate-400">
-            Nilai Error Rate
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
+            ERROR RATE
           </span>
         </div>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-          Semakin kecil persentase error (MAPE), semakin tinggi tingkat akurasi peramalan.
+        <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-2 uppercase tracking-wide">
+          Nilai deviasi model estimasi regresi data penjualan.
         </p>
       </div>
 
       {/* 3. Mathematical Equation (Trend Moment) */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Persamaan Linear
-            </p>
-            <div className="flex items-center space-x-1 mt-0.5">
+      <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-none p-4 flex flex-col justify-between">
+        <div className="flex items-start justify-between">
+          <div className="space-y-1.5">
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 block">
+              PERSAMAAN LINEAR
+            </span>
+            <div className="flex items-center space-x-1">
               {isUpwardTrend ? (
                 <>
-                  <TrendingUp size={14} className="text-emerald-500" />
-                  <span className="text-[11px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Tren Meningkat</span>
+                  <TrendingUp size={12} className="text-emerald-600 dark:text-emerald-500" />
+                  <span className="text-[9px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/20 px-1.5 py-0.5 rounded-none border border-emerald-200/50">TREN MENINGKAT</span>
                 </>
               ) : (
                 <>
-                  <TrendingDown size={14} className="text-amber-500" />
-                  <span className="text-[11px] font-bold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">Tren Menurun</span>
+                  <TrendingDown size={12} className="text-amber-600 dark:text-amber-500" />
+                  <span className="text-[9px] font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/20 px-1.5 py-0.5 rounded-none border border-amber-200/50">TREN MENURUN</span>
                 </>
               )}
             </div>
           </div>
-          <div className="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-xl text-amber-600 dark:text-amber-400">
-            <Calculator size={20} />
+          <div className="p-1.5 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 rounded-none">
+            <Calculator size={16} />
           </div>
         </div>
-        <div className="mt-4">
-          <span className="text-lg font-bold text-slate-800 dark:text-slate-200 block bg-slate-50 dark:bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-100 dark:border-slate-850 font-mono text-center">
+        <div className="mt-3">
+          <span className="text-xs font-bold text-slate-800 dark:text-slate-200 block bg-slate-50 dark:bg-slate-950 px-2 py-1.5 border border-slate-200 dark:border-slate-800 font-mono text-center rounded-none">
             Y = {formattedA} {isUpwardTrend ? '+' : ''} {formattedB}X
           </span>
         </div>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2.5">
-          Model regresi linier di mana <span className="font-mono">X</span> adalah periode berikutnya.
+        <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-2 uppercase tracking-wide">
+          Persamaan tren dengan X sebagai periode berikutnya.
         </p>
       </div>
     </div>

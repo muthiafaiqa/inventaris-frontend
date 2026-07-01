@@ -1,4 +1,4 @@
-import { AlertTriangle, CheckCircle2, Loader2 } from 'lucide-react';
+import { CheckCircle2, Loader2 } from 'lucide-react';
 import type { LowStockItem } from '../hooks/useDashboard';
 
 export interface StockAlertTableProps {
@@ -15,84 +15,80 @@ export function StockAlertTable({
   
   if (loading) {
     return (
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
-        <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center space-x-2">
-          <AlertTriangle size={18} className="text-amber-500 animate-pulse" />
-          <h3 className="text-md font-bold text-slate-900 dark:text-white">
-            Daftar Produk yang Perlu Segera Restock
+      <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-none overflow-hidden">
+        <div className="p-3 border-b border-slate-300 dark:border-slate-800">
+          <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-850 dark:text-slate-150">
+            DAFTAR PRODUK YANG PERLU SEGERA RESTOCK
           </h3>
         </div>
-        <div className="p-12 flex flex-col items-center justify-center space-y-3">
-          <Loader2 size={32} className="animate-spin text-cyan-500" />
-          <p className="text-xs text-slate-400">Memuat analisis persediaan...</p>
+        <div className="p-8 flex flex-col items-center justify-center space-y-2">
+          <Loader2 size={20} className="animate-spin text-slate-400 dark:text-slate-500" />
+          <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">LOADING...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
-      <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <AlertTriangle size={18} className="text-amber-500" />
-          <h3 className="text-md font-bold text-slate-900 dark:text-white">
-            Daftar Produk yang Perlu Segera Restock
-          </h3>
-        </div>
+    <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-none overflow-hidden">
+      <div className="p-3 border-b border-slate-300 dark:border-slate-800 flex items-center justify-between">
+        <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-850 dark:text-slate-150">
+          DAFTAR PRODUK YANG PERLU SEGERA RESTOCK
+        </h3>
         {lowStockProductsCount > 0 && (
-          <span className="text-[11px] font-bold px-2 py-0.5 bg-red-150 text-red-650 dark:bg-red-950/20 dark:text-red-400 border border-red-200/50 dark:border-red-900/30 rounded-full uppercase tracking-wider">
-            Prioritas Tinggi
+          <span className="text-[9px] font-bold font-mono px-1.5 py-0.5 bg-amber-500/10 text-amber-600 dark:text-amber-500 border border-amber-500/20 rounded-none uppercase tracking-wider">
+            WARNING
           </span>
         )}
       </div>
 
       {lowStockProductsCount === 0 ? (
-        <div className="p-12 text-center max-w-sm mx-auto space-y-4">
-          <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/30 text-emerald-500 rounded-full flex items-center justify-center mx-auto border border-emerald-500/10">
-            <CheckCircle2 size={24} />
+        <div className="p-8 text-center max-w-sm mx-auto space-y-2">
+          <div className="w-8 h-8 bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 rounded-none flex items-center justify-center mx-auto border border-slate-200 dark:border-slate-750">
+            <CheckCircle2 size={16} />
           </div>
           <div>
-            <h4 className="font-bold text-slate-900 dark:text-white text-md">Persediaan Aman</h4>
-            <p className="text-slate-500 dark:text-slate-400 text-xs mt-1">
-              Semua produk saat ini memiliki stok di atas ambang batas stok minimal yang disyaratkan.
+            <h4 className="font-bold uppercase tracking-wider text-slate-900 dark:text-white text-xs">STATUS: SECURE</h4>
+            <p className="text-slate-500 dark:text-slate-400 text-[10px] mt-1 leading-relaxed">
+              Semua produk memiliki tingkat persediaan di atas batas minimal.
             </p>
           </div>
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-sm">
+          <table className="w-full text-left border-collapse text-[11px] font-mono">
             <thead>
-              <tr className="bg-slate-50 dark:bg-slate-950/40 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
-                <th className="py-4 px-6 w-36">SKU</th>
-                <th className="py-4 px-6">Nama Produk</th>
-                <th className="py-4 px-6 text-right">Ambang Min (Sistem)</th>
-                <th className="py-4 px-6 text-right">Stok Saat Ini (Estimasi)</th>
-                <th className="py-4 px-6 text-center">Defisit</th>
+              <tr className="bg-slate-50 dark:bg-slate-950/40 text-slate-450 dark:text-slate-500 font-bold uppercase tracking-wider border-b border-slate-300 dark:border-slate-800">
+                <th className="py-2.5 px-4 w-32 tracking-wider">SKU</th>
+                <th className="py-2.5 px-4 tracking-wider">NAMA PRODUK</th>
+                <th className="py-2.5 px-4 text-right tracking-wider">MIN. STOCK</th>
+                <th className="py-2.5 px-4 text-right tracking-wider">CURRENT EST.</th>
+                <th className="py-2.5 px-4 text-center tracking-wider">DEFICIT</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 font-sans">
               {lowStockProducts.map((product) => {
                 const deficit = product.min_stock - product.current_stock;
                 return (
                   <tr 
                     key={product.id}
-                    className="hover:bg-slate-50/50 dark:hover:bg-slate-950/20 transition-colors"
+                    className="hover:bg-slate-50/[0.4] dark:hover:bg-slate-950/20 transition-colors duration-200 ease-in-out"
                   >
-                    <td className="py-4 px-6 font-mono font-bold text-slate-550 dark:text-slate-450">
+                    <td className="py-2.5 px-4 font-mono font-bold text-slate-700 dark:text-slate-300">
                       {product.sku}
                     </td>
-                    <td className="py-4 px-6 font-semibold text-slate-700 dark:text-slate-200">
+                    <td className="py-2.5 px-4 font-medium text-slate-900 dark:text-slate-100">
                       {product.nama}
                     </td>
-                    <td className="py-4 px-6 text-right font-medium text-slate-600 dark:text-slate-400">
-                      {product.min_stock} <span className="text-xs text-slate-400">{product.unit}</span>
+                    <td className="py-2.5 px-4 text-right font-mono text-slate-500 dark:text-slate-400">
+                      {product.min_stock.toLocaleString()} <span className="text-[9px] text-slate-400 uppercase tracking-wider">{product.unit}</span>
                     </td>
-                    <td className="py-4 px-6 text-right font-bold text-red-500 dark:text-red-400">
-                      {product.current_stock} <span className="text-xs text-slate-400">{product.unit}</span>
+                    <td className="py-2.5 px-4 text-right font-mono font-bold text-amber-600 dark:text-amber-500">
+                      {product.current_stock.toLocaleString()} <span className="text-[9px] text-slate-400 uppercase tracking-wider">{product.unit}</span>
                     </td>
-                    <td className="py-4 px-6 text-center">
-                      <span className="inline-block text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded border border-amber-500/20">
-                        -{deficit} {product.unit}
+                    <td className="py-2.5 px-4 text-center font-mono">
+                      <span className="inline-block text-[10px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-500 px-1.5 py-0.5 rounded-none border border-amber-500/20">
+                        -{deficit.toLocaleString()} {product.unit}
                       </span>
                     </td>
                   </tr>

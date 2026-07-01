@@ -110,80 +110,80 @@ export function ProductFormModal({
       <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       
       {/* Modal Content Card */}
-      <div className="relative bg-white dark:bg-slate-900 rounded-2xl w-full max-w-md shadow-2xl border border-slate-200 dark:border-slate-800 z-10 overflow-hidden animate-scale-up">
+      <div className="relative bg-white dark:bg-slate-900 rounded-none w-full max-w-md shadow-none border border-slate-300 dark:border-slate-800 z-10 overflow-hidden">
         {/* Modal Header */}
-        <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-            {mode === 'add' ? 'Tambah Produk Baru' : 'Ubah Data Produk'}
+        <div className="px-4 py-3 border-b border-slate-300 dark:border-slate-800 flex items-center justify-between">
+          <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider font-mono">
+            {mode === 'add' ? 'TAMBAH PRODUK BARU' : 'UBAH DATA PRODUK'}
           </h3>
           <button 
             onClick={onClose}
-            className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg transition-colors"
+            className="p-1 hover:border-slate-300 dark:hover:border-slate-750 text-slate-450 hover:text-slate-600 border border-transparent rounded-none transition-colors"
           >
-            <X size={18} />
+            <X size={14} />
           </button>
         </div>
 
         {/* Modal Form */}
         <form onSubmit={handleSubmit}>
-          <div className="p-6 space-y-4">
+          <div className="p-4 space-y-4">
             {/* Form Error Message */}
             {formError && (
-              <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg text-sm flex items-center space-x-2">
-                <AlertTriangle size={16} className="shrink-0" />
+              <div className="bg-red-500/5 border border-red-500/30 text-red-700 dark:text-red-400 p-3 rounded-none text-xs flex items-center space-x-2">
+                <AlertTriangle size={14} className="shrink-0" />
                 <span>{formError}</span>
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
-                SKU Kode
+              <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-1.5">
+                SKU KODE
               </label>
               <input
                 type="text"
                 value={sku}
                 onChange={(e) => setSku(e.target.value)}
-                placeholder="Contoh: SKU-L10W-PI"
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                placeholder="Contoh: SKU-L10W-PH"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-none px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-slate-500 font-mono font-bold"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
-                Nama Produk
+              <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-1.5">
+                NAMA PRODUK
               </label>
               <input
                 type="text"
                 value={nama}
                 onChange={(e) => setNama(e.target.value)}
-                placeholder="Contoh: Lampu LED Philip 10W"
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                placeholder="Contoh: Lampu LED Philips 10W"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-none px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-slate-500 font-sans"
                 required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
-                  Satuan
+                <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-1.5">
+                  SATUAN
                 </label>
                 <select
                   value={unit}
                   onChange={(e) => setUnit(e.target.value)}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-none px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-slate-500 font-bold uppercase tracking-wider"
                 >
                   {units.map((u) => (
                     <option key={u} value={u}>
-                      {u}
+                      {u.toUpperCase()}
                     </option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
-                  Minimal Stok
+                <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-1.5">
+                  MINIMAL STOK
                 </label>
                 <input
                   type="number"
@@ -191,15 +191,15 @@ export function ProductFormModal({
                   value={minStock}
                   onChange={(e) => setMinStock(e.target.value === '' ? '' : Number(e.target.value))}
                   placeholder="Min. Stok"
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-none px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-slate-500 font-mono font-bold"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
-                Harga Produk (Rp)
+              <label className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-1.5">
+                HARGA PRODUK (RP)
               </label>
               <input
                 type="number"
@@ -207,28 +207,28 @@ export function ProductFormModal({
                 value={harga}
                 onChange={(e) => setHarga(e.target.value === '' ? '' : Number(e.target.value))}
                 placeholder="Contoh: 75000"
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-xl px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-none px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-slate-500 font-mono font-bold"
                 required
               />
             </div>
           </div>
 
           {/* Modal Footer Actions */}
-          <div className="px-6 py-4 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end space-x-3">
+          <div className="px-4 py-3 bg-slate-50 dark:bg-slate-950/40 border-t border-slate-300 dark:border-slate-800 flex items-center justify-end space-x-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm font-semibold text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all"
+              className="bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-200 font-bold px-3 py-1.5 border border-slate-300 dark:border-slate-800 rounded-none transition-colors text-[10px] uppercase tracking-wider"
             >
               Batal
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-cyan-500/10 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center space-x-1.5 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-bold px-3 py-1.5 border border-slate-900 dark:border-white rounded-none transition-colors text-[10px] uppercase tracking-wider disabled:opacity-40"
             >
-              {submitting && <Loader2 size={16} className="animate-spin" />}
-              <span>{mode === 'add' ? 'Simpan' : 'Perbarui'}</span>
+              {submitting && <Loader2 size={12} className="animate-spin text-slate-450" />}
+              <span>{mode === 'add' ? 'SIMPAN' : 'PERBARUI'}</span>
             </button>
           </div>
         </form>
