@@ -71,7 +71,7 @@ export default function ForecastingPage() {
                 onChange={(e) => setSelectedProductId(e.target.value)}
                 className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-none px-3 py-1.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-slate-500 font-bold uppercase tracking-wider"
               >
-                <option value="" disabled>-- PILIH PRODUK --</option>
+                <option value="">-- PILIH PRODUK --</option>
                 {products.map((p) => (
                   <option key={p.id} value={p.id}>
                     [{p.sku}] - {p.nama.toUpperCase()}
@@ -228,7 +228,12 @@ export default function ForecastingPage() {
       ) : (
         <div className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-none p-16 flex flex-col items-center justify-center text-slate-400 space-y-2">
           <AlertTriangle size={32} className="text-slate-300 dark:text-slate-700" />
-          <p className="text-[10px] font-mono uppercase tracking-wider">NO ANALYSIS DATA AVAILABLE</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-center">
+            {!selectedProductId 
+              ? "Silahkan pilih produk terlebih dahulu untuk memulai analisis."
+              : "NO ANALYSIS DATA AVAILABLE"
+            }
+          </p>
         </div>
       )}
     </div>

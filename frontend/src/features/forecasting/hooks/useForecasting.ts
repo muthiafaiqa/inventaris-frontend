@@ -84,17 +84,13 @@ export function useForecasting() {
     }
   }, [fetchSalesByProduct]);
 
-  // Set default product when products list is loaded
-  useEffect(() => {
-    if (products.length > 0 && !selectedProductId) {
-      setSelectedProductId(products[0].id);
-    }
-  }, [products, selectedProductId]);
-
-  // Re-run forecasting whenever selected product changes
+  // Re-run forecasting whenever selected product changes, or clear results when reset
   useEffect(() => {
     if (selectedProductId) {
       runForecasting(selectedProductId);
+    } else {
+      setForecastResult(null);
+      setError(null);
     }
   }, [selectedProductId, runForecasting]);
 
