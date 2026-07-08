@@ -27,7 +27,7 @@ export default function DashboardLayout() {
     { name: 'Ringkasan', path: '/', icon: LayoutDashboard },
     { name: 'Master Produk', path: '/products', icon: Package },
     { name: 'Historis Penjualan', path: '/sales', icon: History },
-    { name: 'Peramalan Stok', path: '/forecasting', icon: TrendingUp },
+    { name: 'Prediksi Stok', path: '/forecasting', icon: TrendingUp },
   ];
 
   return (
@@ -158,7 +158,7 @@ export default function DashboardLayout() {
         {/* Top Header - Desktop */}
         <header className="hidden md:flex items-center justify-between px-8 py-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800/80">
           <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">
-            Sistem Inventaris & Peramalan Toko Surya Elektrik
+            Sistem Inventaris & Prediksi Stok Toko Surya Elektrik
           </span>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-slate-600 dark:text-slate-300 font-medium">

@@ -45,7 +45,7 @@ export default function ForecastingPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-300 dark:border-slate-800 pb-4">
         <div>
           <h1 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider font-sans">
-            Peramalan Stok
+            Prediksi Stok
           </h1>
           <p className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mt-1">
             Analisis Proyeksi Kebutuhan Pengadaan Barang Menggunakan Metode Regresi Trend Moment
