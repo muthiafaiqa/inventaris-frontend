@@ -1,0 +1,19 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-26: Restock Product increases Current Stock",
+  "description": "Restocking a product through the restock modal increases its current stock.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "action", "description": "Click the Master Produk sidebar navigation item" },
+    { "type": "action", "description": "Click the RESTOCK button for a target product row in the table" },
+    { "type": "action", "description": "Type 15 in the Tambah Kuantitas input field" },
+    { "type": "action", "description": "Click the Simpan Restock button to submit" },
+    { "type": "assertion", "description": "Verify the modal closes and the table updates" },
+    { "type": "assertion", "description": "Verify that the product's current stock has increased by 15 in the table row" }
+  ]
+}

@@ -1,0 +1,9 @@
+[build]
+  # Base directory: Arahkan Netlify ke folder 'frontend' sebelum menjalankan instalasi dan build
+  base = "frontend"
+
+  # Build command: Jalankan perintah build di dalam folder 'frontend'
+  command = "npm run build"
+
+  # Publish directory: Lokasi folder output build (relatif terhadap 'base' directory)
+  publish = "dist"

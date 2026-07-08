@@ -1,0 +1,15 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-01: Admin Login with Valid Credentials",
+  "description": "Admin login with valid email and password directs the user to the monitoring dashboard.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "assertion", "description": "Verify the URL changes to the root path / and the dashboard layout renders" },
+    { "type": "assertion", "description": "Verify the dashboard header text shows DASBOR PEMANTAUAN" }
+  ]
+}

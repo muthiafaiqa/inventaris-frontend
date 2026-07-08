@@ -1,0 +1,22 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-31: Add Sales History Record Successfully",
+  "description": "Inputting a new sales record successfully logs it in the sales history page.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "action", "description": "Click the Historis Penjualan sidebar navigation item" },
+    { "type": "action", "description": "Click the INPUT PENJUALAN button to open the form modal" },
+    { "type": "action", "description": "Select the target product in the dropdown product selector" },
+    { "type": "action", "description": "Type 25 in the Kuantitas Terjual input field" },
+    { "type": "action", "description": "Select the month from the dropdown selector" },
+    { "type": "action", "description": "Type 2026 in the Tahun input field" },
+    { "type": "action", "description": "Click the Simpan Transaksi button to submit" },
+    { "type": "assertion", "description": "Verify the modal closes and the sales table updates" },
+    { "type": "assertion", "description": "Verify the newly added sales entry is listed in the history table" }
+  ]
+}

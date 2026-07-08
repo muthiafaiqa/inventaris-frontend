@@ -1,0 +1,23 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-16: Add New Product Master Successfully",
+  "description": "Adding a new product with unique SKU, name, unit, price, and min stock successfully lists it.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "action", "description": "Click the Master Produk sidebar navigation item" },
+    { "type": "action", "description": "Click the TAMBAH PRODUK button to open the form modal" },
+    { "type": "action", "description": "Type TS-KBL-SUP in the SKU input field" },
+    { "type": "action", "description": "Type Kabel Supreme Test 4mm in the Nama input field" },
+    { "type": "action", "description": "Type Roll in the Satuan input field" },
+    { "type": "action", "description": "Type 600000 in the Harga input field" },
+    { "type": "action", "description": "Type 12 in the Batas Minimal Stok input field" },
+    { "type": "action", "description": "Click the Simpan Produk button to submit the form" },
+    { "type": "assertion", "description": "Verify the modal closes and the table updates" },
+    { "type": "assertion", "description": "Verify the product with SKU TS-KBL-SUP is listed in the products table" }
+  ]
+}

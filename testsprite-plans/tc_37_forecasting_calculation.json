@@ -1,0 +1,17 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-37: Forecasting Calculation and MAPE",
+  "description": "Selecting a product with at least 3 historical sales periods displays its trend moment forecast and MAPE.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "action", "description": "Click the Peramalan Stok sidebar navigation item" },
+    { "type": "action", "description": "Select the target product with historical sales data from the dropdown" },
+    { "type": "assertion", "description": "Verify the linear regression formula parameters are calculated and displayed on screen" },
+    { "type": "assertion", "description": "Verify the MAPE percentage value and the model accuracy label are visible" }
+  ]
+}

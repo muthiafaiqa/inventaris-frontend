@@ -1,0 +1,15 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-14: Dashboard Restock Alerts Visibility",
+  "description": "Dashboard correctly displays low stock products requiring restock under the alert section.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "action", "description": "Scroll down to the Restock Alert table section" },
+    { "type": "assertion", "description": "Verify the restock alert table lists products where current stock is lower than minimum stock" }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-06: Protected Route Accessed When Authenticated",
+  "description": "Accessing the master products page works normally when authenticated.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "action", "description": "Click the Master Produk sidebar navigation item" },
+    { "type": "assertion", "description": "Verify the main content updates to show the Master Produk section" },
+    { "type": "assertion", "description": "Verify the page header displays the title MASTER PRODUK" }
+  ]
+}

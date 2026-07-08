@@ -1,0 +1,15 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-09: Dashboard Bento Grid Metric Cards",
+  "description": "Dashboard loads correct overview metrics for products, periods, and restock alerts.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "assertion", "description": "Verify the bento grid cards for TOTAL PRODUK, TOTAL PERIODE, and RESTOCK ALERT are visible" },
+    { "type": "assertion", "description": "Verify each card displays a numeric counter value indicating status" }
+  ]
+}

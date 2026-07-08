@@ -1,0 +1,23 @@
+{
+  "projectId": "PROJECT_ID_PLACEHOLDER",
+  "type": "frontend",
+  "name": "TC-17: Add Product Rejects Duplicate SKU",
+  "description": "Adding a product with an already existing SKU displays a validation error.",
+  "priority": "p0",
+  "planSteps": [
+    { "type": "action", "description": "Navigate to the login page at /login" },
+    { "type": "action", "description": "Type admin@suryaelektrik.com in the email input field" },
+    { "type": "action", "description": "Type password123 in the password input field" },
+    { "type": "action", "description": "Click the Masuk ke Sistem button" },
+    { "type": "action", "description": "Click the Master Produk sidebar navigation item" },
+    { "type": "action", "description": "Click the TAMBAH PRODUK button to open the form modal" },
+    { "type": "action", "description": "Type LMP-LED-10W-PH in the SKU input field" },
+    { "type": "action", "description": "Type Duplicate Product Test in the Nama input field" },
+    { "type": "action", "description": "Type pcs in the Satuan input field" },
+    { "type": "action", "description": "Type 45000 in the Harga input field" },
+    { "type": "action", "description": "Type 10 in the Batas Minimal Stok input field" },
+    { "type": "action", "description": "Click the Simpan Produk button to submit the form" },
+    { "type": "assertion", "description": "Verify that an error message indicating that the SKU is already in use is displayed" },
+    { "type": "assertion", "description": "Verify the modal remains open so the user can correct the SKU" }
+  ]
+}
